@@ -1,5 +1,9 @@
 import '../css/MovieCard.css'
 
+
+
+
+
 function MovieCard({movie}) {
     function favoriteToggle() {
         alert("clicked");

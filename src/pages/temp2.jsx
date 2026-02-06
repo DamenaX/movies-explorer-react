@@ -1,29 +1,39 @@
 import '../css/Home.css'
-
 import MovieCard from "../components/Movie.jsx";
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { getPopularMovies, searchMovies } from '../services/api.js';
+
 
 function Home() {
     const [searchQuery, setSearchQuery] = useState("");
-    const movies = [
-        { id: 1, title: "John Wick", year: "2013" },
-        { id: 2, title: "Terminator", year: "1999" },
-        { id: 3, title: "The Matrix", year: "1999" }
-    ]
+    const [movies, setMovies] = useState([]);
 
-    function submitForm() {alert("form submitted")};
+    useEffect(() => {
+        async function fetchMovies() {
+            try {
+                const popularMovies = await getPopularMovies();
+                setMovies(popularMovies);
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        fetchMovies();
+    }, []);
+
+    function submitForm() { alert("form submitted") };
 
     return (
         <div className="home">
             <form className="search-form" onSubmit={submitForm}>
-                <input type="text" placeholder="Search" 
-                value={searchQuery} 
-                onChange={(e) => setSearchQuery(e.target.value)}/>
+                <input type="text" placeholder="Search"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)} />
                 <button type="submit" className="search-btn">Search</button>
             </form>
 
             {movies.map(movie => {
-                return <MovieCard key={movie.id} movie={movie}/>;
+                return <MovieCard key={movie.id} movie={movie} />;
             })}
         </div>
     );
