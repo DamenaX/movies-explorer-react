@@ -1,3 +1,5 @@
+import '../css/MovieCard.css'
+
 function MovieCard({movie}) {
     function favoriteToggle() {
         alert("clicked");
@@ -12,7 +14,7 @@ function MovieCard({movie}) {
             </div>
         </div>
         <div className="movie-info">
-            <p>{movie.title}</p>
+            <h3>{movie.title}</h3>
             <p>{movie.release_date}</p>
         </div>
     </div>

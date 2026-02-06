@@ -1,3 +1,5 @@
+import '../css/Home.css'
+
 import MovieCard from "../components/Movie.jsx";
 import { useState } from 'react'
 
@@ -12,7 +14,7 @@ function Home() {
     function submitForm() {alert("form submitted")};
 
     return (
-        <div>
+        <div className="home">
             <form className="search-form" onSubmit={submitForm}>
                 <input type="text" placeholder="Search" 
                 value={searchQuery} 
