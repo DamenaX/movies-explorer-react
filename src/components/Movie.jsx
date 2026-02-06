@@ -1,6 +1,6 @@
 function MovieCard({movie}) {
     function favoriteToggle() {
-
+        alert("clicked");
     }
 
     return (
@@ -8,7 +8,7 @@ function MovieCard({movie}) {
         <div className="movie-poster">
             <img src={movie.img} alt={movie.title}/>
             <div className="movie-overlay">
-                <button className="favorite-btn" onClick={favoriteToggle}></button>
+                <button className="favorite-btn" onClick={favoriteToggle}>FAV</button>
             </div>
         </div>
         <div className="movie-info">
